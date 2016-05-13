@@ -1,0 +1,65 @@
+{
+    "version": 2,
+    "controller": {},
+    "workers": [
+        {
+            "type": "router",
+            "realms": [
+                {
+                    "name": "demo",
+                    "roles": [
+                        {
+                            "name": "anonymous",
+                            "permissions": [
+                                {
+                                    "uri": "",
+                                    "match": "prefix",
+                                    "allow": {
+                                        "call": true,
+                                        "register": true,
+                                        "publish": true,
+                                        "subscribe": true
+                                    },
+                                    "disclose": {
+                                        "caller": true,
+                                        "publisher": true
+                                    },
+                                    "cache": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "transports": [
+                {
+                    "type": "web",
+                    "endpoint": {
+                        "type": "tcp",
+                        "port": 9999
+                    },
+                    "paths": {
+                        "/": {
+                            "type": "static",
+                            "directory": "../html"
+                        },
+                        "ws": {
+                            "type": "websocket",
+                            "options": {
+                                "auto_ping_interval": 55000
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "guest",
+            "executable": "/home/meejah/node-v4.4.4-linux-x64/bin/node",
+            "arguments": ["backend.js"],
+            "options": {
+                "workdir": "../javascript"
+            }
+        }
+    ]
+}

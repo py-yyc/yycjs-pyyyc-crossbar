@@ -1,0 +1,6 @@
+
+A simple little demo of a distributed app, that has:
+
+ - shared state (current "icon" being designed)
+ - many clients, changing state
+ - "get current state" and "subscribe to updates"

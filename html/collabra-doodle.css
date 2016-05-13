@@ -1,0 +1,94 @@
+body {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20pt;
+    color: #839496;
+    background-color: #fdf6e3;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+header {
+    font-size: 20pt;
+    position: absolute;
+    height: 10%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #fdf6e3;
+    background-color: #839496;
+}
+
+header #title {
+    font-size: 30pt;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0em;
+    width: 100%;
+    text-shadow: 1px 1px 1px black;
+}
+
+header #client_count {
+    position: absolute;
+    top: .5em;
+    right: 0;
+    height: 1.5em;
+    valign: middle;
+    color: black;
+    padding-right: 1em;
+}
+
+header #status {
+    display: inline-block;
+    position: absolute;
+    top: .5em;
+    left: .5em;
+    height: 1.5em;
+    color: black;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.board {
+    position: absolute;
+    height: 90%;
+    height: calc(90% - 3em);
+    width: 90%;
+    top: 10%;
+    left: 5%;
+}
+
+.board tr {
+    height: 5%;
+}
+
+.board td {
+    margin: 0px;
+    padding: 0px;
+    width: 5%;
+    width: calc(5% - 2px);
+    border-radius: 0.25vw;
+}
+
+.board a {
+    display: block;
+    border: 1px solid transparent;
+    padding: 4px;
+    height: 95%;
+    width: 95%;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    border-radius: 0.25vw;
+}
+
+.board a:hover {
+  padding: 0px;
+  border: 5px solid #cb4b16;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+}
