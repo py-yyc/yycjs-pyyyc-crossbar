@@ -45,9 +45,9 @@
                         },
                         "ws": {
                             "type": "websocket",
-                            "options": {
+			    "options": {
                                 "auto_ping_interval": 55000
-                            }
+			    }
                         }
                     }
                 }
@@ -55,10 +55,10 @@
         },
         {
             "type": "guest",
-            "executable": "/home/meejah/node-v4.4.4-linux-x64/bin/node",
-            "arguments": ["backend.js"],
+            "executable": "../venv/bin/python",
+            "arguments": ["backend.py"],
             "options": {
-                "workdir": "../javascript"
+                "workdir": "../python"
             }
         }
     ]
