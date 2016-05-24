@@ -415,13 +415,13 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>boilerplate</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">autobahn.twisted.wamp</span> <span class="kn">import</span> <span class="n">ApplicationSession</span><span class="p">,</span> <span class="n">ApplicationRunner</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">autobahn.twisted</span> <span class="kn">import</span> <span class="n">wamp</span>
 </pre></div>
 <!--- chunk -->
 <div class="highlight"><pre><span></span><span class="c1"># from autobahn.asyncio import wamp</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">wamp</span><span class="o">.</span><span class="n">ApplicationSession</span><span class="p">):</span>
 </pre></div>
 <!--- chunk -->
 <div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">onJoin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
@@ -429,7 +429,7 @@ background-color: rgba(0, 0, 0, 0.8);
 </pre></div>
 <!--- chunk -->
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">runner</span> <span class="o">=</span> <span class="n">wamp</span><span class="o">.</span><span class="n">ApplicationRunner</span><span class="p">(</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">wamplApplicationRunner</span><span class="p">(</span>
         <span class="s1">u&#39;ws://pyyyc.meejah.ca/ws&#39;</span><span class="p">,</span>
         <span class="s1">u&#39;demo&#39;</span><span class="p">,</span>
     <span class="p">)</span>
