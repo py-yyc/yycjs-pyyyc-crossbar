@@ -1,7 +1,7 @@
 var autobahn = require('autobahn');
 
 var connection = new autobahn.Connection({
-    url: 'ws://yycjs.meejah.ca/ws',
+    url: 'ws://pyyyc.meejah.ca/ws',
     realm: 'demo'
 });
 

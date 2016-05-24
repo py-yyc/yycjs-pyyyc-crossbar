@@ -18,6 +18,6 @@ class RandomAgent(Session):
 
 
 if __name__ == '__main__':
-    runner = ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
-    #runner = ApplicationRunner(u'ws://yycjs.meejah.ca/ws', u'demo')
+    # runner = ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
+    runner = ApplicationRunner(u'ws://pyyyc.meejah.ca/ws', u'demo')
     runner.run(RandomAgent)
