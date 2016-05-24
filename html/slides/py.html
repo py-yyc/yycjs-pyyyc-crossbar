@@ -415,27 +415,27 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>boilerplate</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">autobahn.twisted</span> <span class="kn">import</span> <span class="n">wamp</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">autobahn.twisted.wamp</span> <span class="kn">import</span> <span class="n">ApplicationSession</span><span class="p">,</span> <span class="n">ApplicationRunner</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span class="c"># from autobahn.asyncio import wamp</span>
+<div class="highlight"><pre><span></span><span class="c1"># from autobahn.asyncio import wamp</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">wamp</span><span class="o">.</span><span class="n">Session</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="k">def</span> <span class="nf">on_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">onJoin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;intersting code goes here&quot;&quot;&quot;</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">wamp</span><span class="o">.</span><span class="n">ApplicationRunner</span><span class="p">(</span>
-        <span class="s">u&#39;ws://yycjs.meejah.ca/ws&#39;</span><span class="p">,</span>
-        <span class="s">u&#39;demo&#39;</span><span class="p">,</span>
+        <span class="s1">u&#39;ws://yycjs.meejah.ca/ws&#39;</span><span class="p">,</span>
+        <span class="s1">u&#39;demo&#39;</span><span class="p">,</span>
     <span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Game</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">Game</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
   </div>
@@ -446,11 +446,11 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Client</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
-        <span class="c"># a 16x16 grid of False values</span>
+        <span class="c1"># a 16x16 grid of False values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_state</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">False</span><span class="p">]</span> <span class="o">*</span> <span class="mi">16</span><span class="p">)</span>
@@ -467,23 +467,23 @@ background-color: rgba(0, 0, 0, 0.8);
 <!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c"># client_id -&gt; Client instance</span>
+        <span class="c1"># client_id -&gt; Client instance</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_color_generator</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="n">COLORS</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="k">def</span> <span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">[</span><span class="n">client_id</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="k">def</span> <span class="nf">client_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">client_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">):</span>
         <span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color_generator</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">[</span><span class="n">client_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="k">def</span> <span class="nf">client_del</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">client_del</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">):</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">[</span><span class="n">client_id</span><span class="p">]</span>
 </pre></div>
 <!--- chunk -->
@@ -495,14 +495,14 @@ background-color: rgba(0, 0, 0, 0.8);
 <!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="c"># ...</span>
-    <span class="nd">@wamp.register</span><span class="p">(</span><span class="s">u&quot;meejah.get_client_count&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="nd">@wamp.register</span><span class="p">(</span><span class="s2">u&quot;meejah.get_client_count&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">client_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="nd">@wamp.register</span><span class="p">(</span><span class="s">u&quot;meejah.get_board&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>    <span class="nd">@wamp.register</span><span class="p">(</span><span class="s2">u&quot;meejah.get_board&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">as_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">state</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
@@ -521,8 +521,8 @@ background-color: rgba(0, 0, 0, 0.8);
 <!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="c"># ...</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Board</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c1"># ...</span>
     <span class="k">def</span> <span class="nf">_get_pixel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">client</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -543,23 +543,23 @@ background-color: rgba(0, 0, 0, 0.8);
 <!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">Session</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
     <span class="nd">@defer.inlineCallbacks</span>
-    <span class="k">def</span> <span class="nf">on_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">onJoin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>        <span class="bp">self</span><span class="o">.</span><span class="n">_board</span> <span class="o">=</span> <span class="n">Board</span><span class="p">()</span>
+<div class="highlight"><pre><span></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_board</span> <span class="o">=</span> <span class="n">Board</span><span class="p">()</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_click</span><span class="p">,</span> <span class="s">u&quot;meejah.click&quot;</span><span class="p">,</span>
-            <span class="n">options</span><span class="o">=</span><span class="n">RegisterOptions</span><span class="p">(</span><span class="n">details_arg</span><span class="o">=</span><span class="s">&quot;details&quot;</span><span class="p">),</span>
+<div class="highlight"><pre><span></span>        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_click</span><span class="p">,</span> <span class="s2">u&quot;meejah.click&quot;</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">RegisterOptions</span><span class="p">(</span><span class="n">details_arg</span><span class="o">=</span><span class="s2">&quot;details&quot;</span><span class="p">),</span>
         <span class="p">)</span>
 </pre></div>
 <!--- chunk -->
@@ -571,18 +571,18 @@ background-color: rgba(0, 0, 0, 0.8);
 <!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">Session</span><span class="p">):</span>
-    <span class="c"># ...</span>
-    <span class="nd">@wamp.subscribe</span><span class="p">(</span><span class="s">u&quot;wamp.session.on_leave&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="nd">@wamp.subscribe</span><span class="p">(</span><span class="s2">u&quot;wamp.session.on_leave&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_session_left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="o">.</span><span class="n">client_del</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s">u&quot;meejah.board_invalid&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">u&quot;meejah.board_invalid&quot;</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre>    <span class="nd">@wamp.subscribe</span><span class="p">(</span><span class="s">u&quot;wamp.session.on_join&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>    <span class="nd">@wamp.subscribe</span><span class="p">(</span><span class="s2">u&quot;wamp.session.on_join&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_session_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="o">.</span><span class="n">client_add</span><span class="p">(</span><span class="n">details</span><span class="p">[</span><span class="s">&#39;session&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s">u&quot;meejah.board_invalid&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_board</span><span class="o">.</span><span class="n">client_add</span><span class="p">(</span><span class="n">details</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">u&quot;meejah.board_invalid&quot;</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
   </div>
@@ -593,26 +593,56 @@ background-color: rgba(0, 0, 0, 0.8);
 <!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet.defer</span> <span class="kn">import</span> <span class="n">inlineCallbacks</span>
-<span class="kn">from</span> <span class="nn">autobahn.twisted.wamp</span> <span class="kn">import</span> <span class="n">Session</span><span class="p">,</span> <span class="n">ApplicationRunner</span>
-<span class="kn">from</span> <span class="nn">autobahn.twisted.util</span> <span class="kn">import</span> <span class="n">sleep</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">autobahn.twisted.wamp</span> <span class="kn">import</span> <span class="n">ApplicationSession</span><span class="p">,</span> <span class="n">ApplicationRunner</span>
 <span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.defer</span> <span class="kn">import</span> <span class="n">inlineCallbacks</span> <span class="k">as</span> <span class="n">coroutine</span>
+<span class="kn">from</span> <span class="nn">autobahn.twisted.util</span> <span class="kn">import</span> <span class="n">sleep</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">RandomAgent</span><span class="p">(</span><span class="n">Session</span><span class="p">):</span>
-    <span class="nd">@inlineCallbacks</span>
-    <span class="k">def</span> <span class="nf">on_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RandomAgent</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
+    <span class="nd">@coroutine</span>
+    <span class="k">def</span> <span class="nf">onJoin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
-                <span class="s">u&quot;meejah.click&quot;</span><span class="p">,</span>
+                <span class="s2">u&quot;meejah.click&quot;</span><span class="p">,</span>
                 <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
                 <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
             <span class="p">)</span>
             <span class="k">yield</span> <span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">runner</span> <span class="o">=</span> <span class="n">ApplicationRunner</span><span class="p">(</span><span class="s">u&#39;ws://yycjs.meejah.ca/ws&#39;</span><span class="p">,</span> <span class="s">u&#39;demo&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">ApplicationRunner</span><span class="p">(</span><span class="s1">u&#39;ws://yycjs.meejah.ca/ws&#39;</span><span class="p">,</span> <span class="s1">u&#39;demo&#39;</span><span class="p">)</span>
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">RandomAgent</span><span class="p">)</span>
+</pre></div>
+<!--- chunk -->
+  </div>
+</div>
+
+<div class="slide">
+<!-- gathered html -->
+<!-- /html -->
+
+  <div class="incremental">
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">autobahn.asyncio.wamp</span> <span class="kn">import</span> <span class="n">ApplicationSession</span><span class="p">,</span> <span class="n">ApplicationRunner</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">asyncio</span> <span class="kn">import</span> <span class="n">coroutine</span><span class="p">,</span> <span class="n">sleep</span>
+</pre></div>
+<!--- chunk -->
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RandomAgent</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
+    <span class="nd">@coroutine</span>
+    <span class="k">def</span> <span class="nf">onJoin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+                <span class="s2">u&quot;meejah.click&quot;</span><span class="p">,</span>
+                <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+                <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">yield from</span> <span class="n">sleep</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+<!--- chunk -->
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">ApplicationRunner</span><span class="p">(</span><span class="s1">u&#39;ws://yycjs.meejah.ca/ws&#39;</span><span class="p">,</span> <span class="s1">u&#39;demo&#39;</span><span class="p">)</span>
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">RandomAgent</span><span class="p">)</span>
 </pre></div>
 <!--- chunk -->
