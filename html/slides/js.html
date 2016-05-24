@@ -332,6 +332,7 @@ background-color: rgba(0, 0, 0, 0.8);
   <li class="incremental"><span>Cross-language</span><br/>
       <span class="small">JS, Python, C++, Java,</span>
       <span class="small" style="font-size: 40%;">C#, Erlang, Go, Haskell, Lua, Objective-C, PHP, Ruby</span></li>
+  <li class="incremental">Python: <span>2</span><span>, 3</span><span>, PyPy</span><span>Twisted <b>or</b>asyncio</span></li>
   <li>Integration / deployment</li>
 </ul>
 <!-- /html -->
@@ -415,22 +416,22 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>boilerplate</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">autobahn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;autobahn&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">autobahn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;autobahn&#39;</span><span class="p">);</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">autobahn</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">autobahn</span><span class="p">.</span><span class="nx">Connection</span><span class="p">({</span>
     <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;ws://yycjs.meejah.ca/ws&#39;</span><span class="p">,</span>
     <span class="nx">realm</span><span class="o">:</span> <span class="s1">&#39;demo&#39;</span><span class="p">,</span>
 <span class="p">});</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">wamp_session</span> <span class="o">=</span> <span class="nx">session</span><span class="p">;</span>
     <span class="cm">/* ...interesting code goes here... */</span>
 <span class="p">};</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+<div class="highlight"><pre><span class="nx">connection</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
 </pre></div>
 <!--- chunk -->
   </div>
@@ -441,32 +442,32 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>frontend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="kd">function</span> <span class="nx">on_board_update</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">on_board_update</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">)</span> <span class="p">{</span>
 	<span class="cm">/* write me */</span>
     <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+<div class="highlight"><pre>    <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
 	<span class="s1">&#39;meejah.board_update&#39;</span><span class="p">,</span>
 	<span class="nx">on_board_update</span>
     <span class="p">);</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="kd">function</span> <span class="nx">on_board_invalid</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">on_board_invalid</span><span class="p">()</span> <span class="p">{</span>
 	<span class="cm">/* write me */</span>
     <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+<div class="highlight"><pre>    <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
 	<span class="s1">&#39;meejah.board_invalid&#39;</span><span class="p">,</span>
 	<span class="nx">on_board_invalid</span>
     <span class="p">);</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* get the initial board-state */</span>
+<div class="highlight"><pre>    <span class="cm">/* get the initial board-state */</span>
     <span class="nx">on_board_invalid</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -479,17 +480,17 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>frontend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="cm">/* globals are bad, right? */</span>
+<div class="highlight"><pre><span class="cm">/* globals are bad, right? */</span>
 <span class="kd">var</span> <span class="nx">wamp_session</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">pixel_click</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">pixel_click</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">wamp_session</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="k">if</span> <span class="p">(</span><span class="nx">wamp_session</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>        <span class="nx">wamp_session</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span>
+<div class="highlight"><pre>        <span class="nx">wamp_session</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span>
 	    <span class="s2">&quot;meejah.click&quot;</span><span class="p">,</span>
 	    <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>
 	<span class="p">);</span>
@@ -505,7 +506,7 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>frontend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="cm">/* we&#39;re inside connection.onopen */</span>
+<div class="highlight"><pre><span class="cm">/* we&#39;re inside connection.onopen */</span>
 <span class="kd">function</span> <span class="nx">on_board_invalid</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">session</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">&quot;meejah.get_board&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">board</span><span class="p">)</span> <span class="p">{</span>
@@ -523,14 +524,14 @@ background-color: rgba(0, 0, 0, 0.8);
         <span class="p">});</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="nx">session</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">&quot;meejah.get_client_count&quot;</span><span class="p">)</span>
+<div class="highlight"><pre>    <span class="nx">session</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s2">&quot;meejah.get_client_count&quot;</span><span class="p">)</span>
 	<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">clients</span><span class="p">)</span> <span class="p">{</span>
 	    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;client_count&quot;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Clients: &quot;</span> <span class="o">+</span> <span class="nx">clients</span><span class="p">;</span>
 	<span class="p">});</span>
 <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;meejah.board_invalid&#39;</span><span class="p">,</span> <span class="nx">on_board_invalid</span><span class="p">);</span>
+<div class="highlight"><pre><span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;meejah.board_invalid&#39;</span><span class="p">,</span> <span class="nx">on_board_invalid</span><span class="p">);</span>
 </pre></div>
 <!--- chunk -->
   </div>
@@ -541,22 +542,22 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>frontend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="cm">/* we&#39;re inside connection.onopen */</span>
+<div class="highlight"><pre><span class="cm">/* we&#39;re inside connection.onopen */</span>
 <span class="kd">function</span> <span class="nx">on_board_update</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
     <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
     <span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="nx">pix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;pixel_&quot;</span> <span class="o">+</span> <span class="nx">x</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nx">y</span><span class="p">);</span>
+<div class="highlight"><pre>    <span class="nx">pix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;pixel_&quot;</span> <span class="o">+</span> <span class="nx">x</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nx">y</span><span class="p">);</span>
     <span class="kd">var</span> <span class="nx">bgcolor</span> <span class="o">=</span> <span class="s2">&quot;rgba(&quot;</span> <span class="o">+</span> <span class="nx">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, 1.0)&quot;</span><span class="p">;</span>
     <span class="nx">pix</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="nx">bgcolor</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;meejah.board_update&#39;</span><span class="p">,</span> <span class="nx">on_board_update</span><span class="p">);</span>
+<div class="highlight"><pre><span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;meejah.board_update&#39;</span><span class="p">,</span> <span class="nx">on_board_update</span><span class="p">);</span>
 </pre></div>
 <!--- chunk -->
   </div>
@@ -567,13 +568,13 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">_clients</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">_clients</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">client_create</span><span class="p">(</span><span class="nx">client_id</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">client_create</span><span class="p">(</span><span class="nx">client_id</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* each client gets a 16x16 array of bools */</span>
+<div class="highlight"><pre>    <span class="cm">/* each client gets a 16x16 array of bools */</span>
     <span class="kd">var</span> <span class="nx">new_board</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 	<span class="nx">new_board</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
@@ -583,12 +584,12 @@ background-color: rgba(0, 0, 0, 0.8);
     <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* assign a color to the client */</span>
+<div class="highlight"><pre>    <span class="cm">/* assign a color to the client */</span>
     <span class="kd">var</span> <span class="nx">new_color</span> <span class="o">=</span> <span class="nx">_client_color</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">;</span>
     <span class="cm">/* freshly-minted client */</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="k">return</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="k">return</span> <span class="p">{</span>
 	<span class="nx">id</span><span class="o">:</span> <span class="nx">client_id</span><span class="p">,</span>
 	<span class="nx">color</span><span class="o">:</span> <span class="nx">new_color</span><span class="p">,</span>
 	<span class="nx">board</span><span class="o">:</span> <span class="nx">new_board</span><span class="p">,</span>
@@ -604,10 +605,10 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">board_click</span><span class="p">(</span><span class="nx">client_id</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">board_click</span><span class="p">(</span><span class="nx">client_id</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* for each click on a square, toggle the state */</span>
+<div class="highlight"><pre>    <span class="cm">/* for each click on a square, toggle the state */</span>
     <span class="nx">client</span> <span class="o">=</span> <span class="nx">_clients</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">client_id</span><span class="p">);</span>
     <span class="nx">client</span><span class="p">.</span><span class="nx">board</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">]</span> <span class="o">=</span> <span class="o">!</span><span class="nx">client</span><span class="p">.</span><span class="nx">board</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="nx">y</span><span class="p">];</span>
 <span class="p">}</span>
@@ -621,28 +622,28 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">autobahn</span><span class="p">.</span><span class="nx">Connection</span><span class="p">(</span><span class="cm">/*...*/</span><span class="p">);</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">autobahn</span><span class="p">.</span><span class="nx">Connection</span><span class="p">(</span><span class="cm">/*...*/</span><span class="p">);</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">_clients</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">_clients</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">();</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="kd">function</span> <span class="nx">client_click</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">,</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">client_click</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">,</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
 	<span class="cm">/* write me! */</span>
     <span class="p">}</span>
     <span class="nx">session</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;meejah.click&#39;</span><span class="p">,</span> <span class="nx">client_click</span><span class="p">);</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="kd">function</span> <span class="nx">board_state</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">board_state</span><span class="p">()</span> <span class="p">{</span>
 	<span class="cm">/* write me! */</span>
     <span class="p">}</span>
     <span class="nx">session</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;meejah.get_board&#39;</span><span class="p">,</span> <span class="nx">board_state</span><span class="p">);</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* API method to get client-count */</span>
+<div class="highlight"><pre>    <span class="cm">/* API method to get client-count */</span>
     <span class="nx">session</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span>
 	<span class="s1">&#39;meejah.get_client_count&#39;</span><span class="p">,</span>
 	<span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">_clients</span><span class="p">.</span><span class="nx">size</span> <span class="p">}</span>
@@ -659,16 +660,16 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* ... */</span>
+<div class="highlight"><pre>    <span class="cm">/* ... */</span>
     <span class="kd">function</span> <span class="nx">client_click</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">kwargs</span><span class="p">,</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
 	<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 	<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>	<span class="nx">board_click</span><span class="p">(</span><span class="nx">details</span><span class="p">.</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
+<div class="highlight"><pre>	<span class="nx">board_click</span><span class="p">(</span><span class="nx">details</span><span class="p">.</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
 	<span class="nx">session</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span>
 	    <span class="s1">&#39;meejah.board_update&#39;</span><span class="p">,</span>
 	    <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">board_color_at</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)]</span>
@@ -686,10 +687,10 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">board_color_at</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">board_color_at</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* union of all clients&#39; state at a particular location */</span>
+<div class="highlight"><pre>    <span class="cm">/* union of all clients&#39; state at a particular location */</span>
     <span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
 
     <span class="nx">_clients</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
@@ -714,28 +715,28 @@ background-color: rgba(0, 0, 0, 0.8);
 <h1>backend</h1><!-- /html -->
 
   <div class="incremental">
-<div class="highlight"><pre><span></span><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="nx">connection</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">session</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="cm">/* ... */</span>
+<div class="highlight"><pre>    <span class="cm">/* ... */</span>
     <span class="cm">/* notice when clients come and go */</span>
     <span class="kd">function</span> <span class="nx">client_join</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>	<span class="kd">var</span> <span class="nx">details</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">details</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 	<span class="nx">_clients</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">details</span><span class="p">.</span><span class="nx">session</span><span class="p">,</span> <span class="nx">client_create</span><span class="p">(</span><span class="nx">details</span><span class="p">.</span><span class="nx">session</span><span class="p">));</span>
         <span class="nx">session</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;meejah.board_invalid&quot;</span><span class="p">)</span>	
     <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="kd">function</span> <span class="nx">client_left</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre>    <span class="kd">function</span> <span class="nx">client_left</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
 	<span class="kd">var</span> <span class="nx">session_id</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
         <span class="nx">_clients</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">session_id</span><span class="p">);</span>
 	<span class="nx">session</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;meejah.board_invalid&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 </pre></div>
 <!--- chunk -->
-<div class="highlight"><pre><span></span>    <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;wamp.session.on_join&quot;</span><span class="p">,</span> <span class="nx">client_join</span><span class="p">)</span>
+<div class="highlight"><pre>    <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;wamp.session.on_join&quot;</span><span class="p">,</span> <span class="nx">client_join</span><span class="p">)</span>
     <span class="nx">session</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;wamp.session.on_leave&quot;</span><span class="p">,</span> <span class="nx">client_left</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
