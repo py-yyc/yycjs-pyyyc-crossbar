@@ -17,6 +17,6 @@ class RandomAgent(wamp.ApplicationSession):
 
 
 if __name__ == '__main__':
-#    runner = wamp.ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
-    runner = wamp.ApplicationRunner(u'ws://yycjs.meejah.ca/ws', u'demo')
+    runner = wamp.ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
+    #runner = wamp.ApplicationRunner(u'ws://yycjs.meejah.ca/ws', u'demo')
     runner.run(RandomAgent)

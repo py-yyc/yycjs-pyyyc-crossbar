@@ -1,7 +1,8 @@
 from twisted.internet import defer
 
-from autobahn.twisted import wamp
+from autobahn.twisted.wamp import Session, ApplicationRunner
 from autobahn.wamp.types import RegisterOptions, PublishOptions
+from autobahn import wamp
 
 import random
 import itertools
@@ -65,19 +66,14 @@ class Board(object):
         return len(self._clients)
 
     def _get_pixel(self, x, y):
-        value = None
+        value = (0, 0, 0)
         for client in self._clients.values():
             if client._state[x][y]:
-                if value is None:
-                    value = client.color
-                else:
-                    value = (
-                        max(value[0], client.color[0]),
-                        max(value[1], client.color[1]),
-                        max(value[2], client.color[2]),
-                    )
-        if value is None:
-            return (0, 0, 0)
+                value = (
+                    max(value[0], client.color[0]),
+                    max(value[1], client.color[1]),
+                    max(value[2], client.color[2]),
+                )
         return value
 
     def as_json(self):
@@ -91,7 +87,7 @@ class Board(object):
         return state
 
 
-class Game(wamp.Session):
+class Game(Session):
     @defer.inlineCallbacks
     def on_join(self, details):
         self._board = Board()
@@ -135,6 +131,6 @@ class Game(wamp.Session):
 
 
 if __name__ == '__main__':
-    runner = wamp.ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
-    # runner = wamp.ApplicationRunner(u'ws://yycjs.meejah.ca:9999/ws', u'demo')
+    runner = ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
+    # runner = ApplicationRunner(u'ws://yycjs.meejah.ca:9999/ws', u'demo')
     runner.run(Game)
