@@ -46,21 +46,14 @@ class Board(object):
         )
 
     def click(self, client_id, x, y):
-        try:
-            self._clients[client_id].click(x, y)
-        except KeyError:
-            self.client_add(client_id)
-            self._clients[client_id].click(x, y)
+        self._clients[client_id].click(x, y)
 
     def client_add(self, client_id):
         color = next(self._color_generator)
         self._clients[client_id] = Client(client_id, color)
 
     def client_del(self, client_id):
-        try:
-            del self._clients[client_id]
-        except KeyError:
-            pass
+        del self._clients[client_id]
 
     @wamp.register(u"meejah.get_client_count")
     def client_count(self):
