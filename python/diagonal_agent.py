@@ -1,13 +1,12 @@
 from twisted.internet import defer
 
-from autobahn.twisted import wamp
+from autobahn.twisted.wamp import Session, ApplicationRunner
 from autobahn.twisted.util import sleep
 import random
 
-class DiagonalAgent(wamp.ApplicationSession):
+class DiagonalAgent(Session):
     @defer.inlineCallbacks
-    def onJoin(self, details):
-        print("agent joined")
+    def on_join(self, details):
         while True:
             for x in range(16):
                 yield self.call(u"meejah.click", x, x)
@@ -15,5 +14,5 @@ class DiagonalAgent(wamp.ApplicationSession):
 
 
 if __name__ == '__main__':
-    runner = wamp.ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
+    runner = ApplicationRunner(u'ws://localhost:9999/ws', u'demo')
     runner.run(DiagonalAgent)

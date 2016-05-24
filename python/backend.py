@@ -62,6 +62,7 @@ class Board(object):
         except KeyError:
             pass
 
+    @wamp.register(u"meejah.get_client_count")
     def client_count(self):
         return len(self._clients)
 
@@ -76,6 +77,7 @@ class Board(object):
                 )
         return value
 
+    @wamp.register(u"meejah.get_board")
     def as_json(self):
         # obviously, caching this would be a great idea...
         state = []
@@ -95,26 +97,19 @@ class Game(Session):
             self._click, u"meejah.click",
             options=RegisterOptions(details_arg="details"),
         )
-        yield self.register(self._board.client_count, u"meejah.get_client_count")
-        yield self.register(self._board.as_json, u"meejah.get_board")
-        yield self.subscribe(self._session_left, u"wamp.session.on_leave")
-        yield self.subscribe(self._session_join, u"wamp.session.on_join")
-
+        yield self.register(self._board)
+        yield self.subscribe(self)
+        
     def on_leave(self, details):
-        print("on_leave", details)
         self.disconnect()
 
+    @wamp.subscribe(u"wamp.session.on_leave")
     def _session_left(self, session):
-        """
-        Triggered on 'wamp.session.on_leave'
-        """
         self._board.client_del(session)
         return self.publish(u"meejah.board_invalid")
 
+    @wamp.subscribe(u"wamp.session.on_join")
     def _session_join(self, details):
-        """
-        Triggered on 'wamp.session.on_join'
-        """
         self._board.client_add(details['session'])
         return self.publish(u"meejah.board_invalid")
 
